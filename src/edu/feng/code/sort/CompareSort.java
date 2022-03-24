@@ -2,8 +2,7 @@ package edu.feng.code.sort;
 
 import StdLib.In;
 
-import static edu.feng.code.utils.SortUtils.isSorted;
-import static edu.feng.code.utils.SortUtils.show;
+import static edu.feng.code.utils.SortUtils.*;
 
 /**
  * @program: baseCode
@@ -14,14 +13,25 @@ import static edu.feng.code.utils.SortUtils.show;
  */
 public class CompareSort {
     public static void main(String[] args) {
-        String[] a = new In("tiny.txt").readAllStrings();
-        sort(a);
+        int[] a = {1, 3, 5, 6, 0, 12, 32, 18, 28, 21, 17, 35};
+        sortCompare(a);
         try {
             assert isSorted(a);
         } catch (Exception e) {
             e.printStackTrace();
         }
         show(a);
+    }
+
+    private static void sortCompare(int[] a) {
+        for (int i = 0; i < a.length - 1; i++) {
+            int min = i;
+            for (int j = i + 1; j < a.length - 1; j ++) {
+                if (a[j] < a[min]) {
+                    swap(a, min, j);
+                }
+            }
+        }
     }
 
 
